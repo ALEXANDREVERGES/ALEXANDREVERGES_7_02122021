@@ -1,6 +1,6 @@
 import '../styles/LogSign.css';
 import React from 'react';
-//import{ Link } from "react-router-dom";
+import{ Link } from "react-router-dom";
 
 function Login(){
     return(
@@ -18,7 +18,7 @@ function Login(){
                 
                 <div><button>Connexion</button></div>    
                 <div class="white">Vous n'acez pas de compte ?</div>
-                <div to="/signup"  class="white">S'inscrire</div>
+                <Link to="/signup"  class="white">S'inscrire</Link>
             </div>
             
         </div>

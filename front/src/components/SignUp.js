@@ -1,5 +1,6 @@
 import '../styles/LogSign.css'
 import React from 'react';
+import{ Link } from "react-router-dom";
 
 function SignUp(){
     return (
@@ -20,6 +21,8 @@ function SignUp(){
                     <input  class="" type="password" placeholder="Votre Mot de passe" id="" name="password" required /> 
                 </div>
                 <div><button>S'inscrire</button></div>    
+                <div class="white">Si vous avez déjà un compte:</div>
+                <Link to="/login"  class="white">Se connecter</Link>
             </div>
             </div>
     )
