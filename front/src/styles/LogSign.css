@@ -1,0 +1,68 @@
+.formulaire{
+    width: 350px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid blueviolet;
+    background-color: blueviolet;
+    margin-top: 50px;
+    border-radius: 15px;
+    box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
+    margin-right: 20px;
+}
+.margin{
+    margin-right: 10px;
+   
+  
+}
+.pos-form{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: raw;
+    margin-top: 100px;
+}
+a{
+    color: white;
+}
+.white{ 
+    color: white;
+}
+.white1{
+    font-size: 20px;
+    color: white;
+}
+.white2{
+    color: white;
+}
+.white2:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+a{
+    text-decoration: none;
+}
+
+input{
+    width: 300px;
+    height: 30px;
+    margin-top: 10px;
+}
+button{
+    height: 30px;
+    border-radius: 10px;
+    color: blueviolet;
+    font-weight: bold;
+    background-color: white;
+    margin-top: 10px;
+    
+}
+.espace-form{
+    color: white;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}

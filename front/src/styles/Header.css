@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid black;
+    color: blueviolet;
+    box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
+    flex-direction: column;
+}
+.header-gpm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+img{
+    width:50px;
+}
