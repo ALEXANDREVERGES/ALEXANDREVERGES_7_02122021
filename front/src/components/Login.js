@@ -2,28 +2,51 @@ import '../styles/LogSign.css';
 import React from 'react';
 import{ Link } from "react-router-dom";
 
-function Login(){
-    return(
-        <div class="pos-form">
-            
-            <div className='formulaire'>
-            <div className="espace-form"> Si vous avez un compte</div>
-                <div class="white1">Se connecter</div>
-                <div class="" id="">
-                    <input  class="" type="text" placeholder="Email" id="" name="Email" required /> 
-                </div>
-                <div class="" id="">
-                    <input  class="" type="password" placeholder="Votre Mot de passe" id="" name="password" required /> 
-                </div>
-                
-                <div><button>Connexion</button></div>    
-                <div class="white">Vous n'acez pas de compte ?</div>
-                <Link to="/signup"  class="white">S'inscrire</Link>
-            </div>
-            
-        </div>
+export default function Login() {
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+   
+  
+    const handleSubmit = (event) => {
+      console.log(`
+        Email: ${email}
+        Password: ${password}
+       
+      `);
+      
+      event.preventDefault();
+    }
+  
+    return (
+        <div className="pos-form">
+      <form className="formulaire" onSubmit={handleSubmit}>
+      <div className="espace-form"> Si vous n'avez pas de compte</div>
+        <h1 className="white1">S'inscrire</h1>
+        <label>
+          <input
+          placeholder="Email"
+            name="email"
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required />
+        </label>
         
-      ) 
-}
-
-export default Login
+        <label>
+          <input
+          placeholder="Votre Mot de passe"
+            name="password"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required />
+        </label>
+  
+  
+        <button>Connexion</button>
+        <div class="white">Vous n'avez pas de compte?</div>
+       <Link to="/signup"  class="white">S'inscrire</Link>
+      </form>
+      </div>
+    );
+  }
