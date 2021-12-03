@@ -20,8 +20,8 @@ export default function Login() {
     return (
         <div className="pos-form">
       <form className="formulaire" onSubmit={handleSubmit}>
-      <div className="espace-form"> Si vous n'avez pas de compte</div>
-        <h1 className="white1">S'inscrire</h1>
+      <div className="espace-form"> Si vous avez un compte</div>
+        <h1 className="white1">Se connecter</h1>
         <label>
           <input
           placeholder="Email"

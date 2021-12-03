@@ -17,6 +17,27 @@ export default function SignUp() {
     `);
     
     event.preventDefault();
+  
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        nom: nom,
+        prenom: prenom,
+        email: email,
+        password: password,
+      }),
+    };
+    fetch("http://localhost:3000/api/auth/signup", requestOptions)
+      .then((response) => {
+        console.log(response.json());
+        if (response.ok) {
+      
+        }
+      })
+      .catch((error) => console.log(error));
+
   }
 
   return (
