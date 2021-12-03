@@ -2,6 +2,7 @@ import React from "react";
 import '../styles/LogSign.css';
 import{ Link } from "react-router-dom";
 
+
 export default function SignUp() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -21,7 +22,6 @@ export default function SignUp() {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
       body: JSON.stringify({
         nom: nom,
         prenom: prenom,
@@ -29,11 +29,11 @@ export default function SignUp() {
         password: password,
       }),
     };
-    fetch("http://localhost:3000/api/auth/signup", requestOptions)
+    fetch("http://localhost:4200/api/auth/signup", requestOptions)
       .then((response) => {
         console.log(response.json());
         if (response.ok) {
-      
+      window.location = '/home';
         }
       })
       .catch((error) => console.log(error));

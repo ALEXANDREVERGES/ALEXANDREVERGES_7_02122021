@@ -3,6 +3,8 @@ import React from 'react';
 import Header from './components/Header.js';
 import Login from './components/Login.js';
 import SignUp from './components/SignUp.js';
+import Home from './components/Home.js';
+import Nav from './components/Nav.js';
 import './styles/App.css';
 
 
@@ -16,7 +18,7 @@ function App(){
     <Router>
       <Switch>
         <Route exact path="/">
-          <Header />
+          <Header /> 
           <Login />
         </Route>   
         <Route path="/signup">
@@ -26,7 +28,11 @@ function App(){
         <Route path="/login">
           <Header />
           <Login />
-        </Route>       
+        </Route> 
+        <Route path="/home">
+          <Nav />
+          <Home />
+        </Route>      
       </Switch>
    </Router>    
   </div> 
