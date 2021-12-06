@@ -1,13 +1,9 @@
-/***npm install --save bcrypt */
+//***npm install --save bcrypt */
 const bcrypt = require('bcrypt');
 //**npm install --save jsonwebtoken */
 const jwt = require('jsonwebtoken');
-
-const User = 'SELECT * FROM user'; 
-
-
-//importation pour utiliser les variables d'environnements (fichier .env)
-const dotenv = require('dotenv');
+const User = `SELECT * FROM user`;
+const db = require('../config/db');
 
 require('dotenv').config();
 
@@ -16,22 +12,36 @@ require('dotenv').config();
 //***cette function va crypter le  password et  créer un nouveau utilisateur (user)*/
 /**en prenant le password crypté + email  et l'enregistré ---> save()*/
 exports.signup = (req, res, next) => {
-  //chiffrer Email avant de l'envoyer dans la base de donnée
-//const emailCryptoJs = cryptojs.HmacSHA256(req.body.email, `${process.env.CRYPTOJS_EMAIL}`).toString();
-    bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-        const user = new User ({
-            name: req.body.name,
-            firstName: req.body.firstName,
-            email: req.body.email ,
-            password: hash
-        });
-        user.save()
-        .then(() => res.status(201).json({ message : 'Utilisateur créé !!'}))
-        .catch(error => res.status(400).json({ error }));
-    })
-    .catch(error => res.status(500).json({ error }));
-};
+    (req,res, next)=> {
+        const nom = req.body.nom;
+        const prenom = req.body.prenom;
+        const email = req.body.email;
+        const password = req.body.password;
+        bcrypt.hash(req.body.password, 10)
+        
+        db.query("INSERT INTO user (nom, prenom, email, password ) VALUES (?,?,?,?)",[nom, prenom, email, password], (err,result)=>{   
+            if(err) {
+                console.log("err")
+               console.log(err)
+               } 
+               console.log("resulta---->")
+               console.log(result)
+         })  
+         .then(hash => {
+            const user = new User ({
+                nom : req.body.nom,
+                prenom : req.body.prenom,
+                email: req.body.email ,
+                password: hash
+            });
+            user.save()
+            .then(() => res.status(201).json({ message : 'Utilisateur créé !!'}))
+            .catch(error => res.status(400).json({ error }));
+        })
+        .catch(error => res.status(500).json({ error }));
+        next();
+        }
+    }
 
 
 
@@ -64,3 +74,4 @@ exports.login = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ error }));
 };
+

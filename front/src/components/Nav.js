@@ -6,7 +6,7 @@ function Nav() {
         <div className="container-nav">
         <div className="nav">
             <div className="title">Groupomania </div>
-            <div>Profil</div>
+            <div className="title">Profil</div>
 
         </div>
         </div>

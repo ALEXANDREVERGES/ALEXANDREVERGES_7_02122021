@@ -39,10 +39,10 @@ export default function Home() {
     return (
         <div className="pos-form">
       <form className="formulaire1" onSubmit={handleSubmit}>
-      <div className="espace-form"> Quoi de neuf ?</div>
+      
         <label>
           <input
-          placeholder="Ecrire"
+          placeholder="Quoi de neuf ?"
             name="message"
             type="message"
             value={Message}

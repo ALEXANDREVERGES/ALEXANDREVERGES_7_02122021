@@ -4,13 +4,14 @@
 .formulaire1{
     width: 100%;
     padding-bottom: 20px;
-    padding-top: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 1px solid blueviolet;
-    background-color: rgb(49, 49, 49);
+    border: 1px solid rgb(93, 70, 112);
+    background-color: rgb(93, 70, 112);
     margin-top: -100px;
     border-radius: 15px;
     box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
