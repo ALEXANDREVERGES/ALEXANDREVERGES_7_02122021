@@ -24,7 +24,7 @@ export default function Login() {
           password: password
         }),
       };
-      fetch("http://localhost:3000/api/auth/login", Options)
+      fetch("http://localhost:3000/auth/login", Options)
           .then(response => response.json())
           .then(function(res) {
                 localStorage.setItem("user", JSON.stringify(res));

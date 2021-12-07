@@ -1,8 +1,8 @@
 import React from "react";
 import '../styles/LogSign.css';
 import{ Link } from "react-router-dom";
-import { toast } from "react-toastify";
-const userRegistered = () => toast.success("Vous êtes bien enregistrés, vous pouvez vous connecter.");
+//import { toast } from "react-toastify";
+//const userRegistered = () => toast.success("Vous êtes bien enregistrés, vous pouvez vous connecter.");
 
 export default function SignUp() {
   const [email, setEmail] = React.useState("");
@@ -17,6 +17,7 @@ export default function SignUp() {
       Prenom: ${prenom}
       Nom: ${nom}
     `);
+    alert('Vous venez de créer votre compte ! Maintenant connectez-vous !');
     
     event.preventDefault();
   
@@ -30,12 +31,12 @@ export default function SignUp() {
         password: password,
       }),
     };
-    fetch("http://localhost:3000/api/auth/signup", requestOptions)
+    fetch("http://localhost:3000/auth/signup", requestOptions)
       .then((response) => {
         console.log(response.json());
         if (response.ok) {
-      userRegistered();
-      window.location = '/home';
+      
+     // window.location = '/home';
         }
       })
       .catch((error) => console.log(error));
