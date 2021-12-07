@@ -1,8 +1,12 @@
 import '../styles/LogSign.css';
 import React from 'react';
 import{ Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
+
+  let history = useHistory();
+ 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
    
@@ -62,7 +66,7 @@ export default function Login() {
         </label>
   
   
-        <button>Connexion</button>
+        <button className="btnSins" onClick={()=> {history.push('/home');}}>Connexion</button>
         <div class="white">Vous n'avez pas de compte?</div>
        <Link to="/signup"  class="white">S'inscrire</Link>
       </form>

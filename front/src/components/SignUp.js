@@ -1,23 +1,48 @@
 import React from "react";
 import '../styles/LogSign.css';
 import{ Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 //import { toast } from "react-toastify";
 //const userRegistered = () => toast.success("Vous êtes bien enregistrés, vous pouvez vous connecter.");
 
 export default function SignUp() {
+  let history = useHistory();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [prenom, setPrenom] = React.useState("");
   const [nom, setNom] = React.useState("");
 
   const signupHandler = (event) => {
+    const regexName =/^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
+    const regexMail =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
+    if(regexName.test(prenom) === true){ 
+    }else{ 
+      
+      alert("Veuillez remplir correctement votre prénom") 
+    };
+    if(regexName.test(nom) === true){ 
+    }else{
+      alert("Veuillez remplir correctement votre nom") 
+    };
+    if(regexMail.test(email) === true){ 
+    }else{
+      alert("Veuillez remplir correctement votre adresse Mail")
+    };
+    if (
+      (regexMail.test(email) === true) &
+      (regexName.test(prenom) === true) &
+      (regexName.test(nom) === true)  
+    ) {
+      history.push("/home");
+
+   
     console.log(`
       Email: ${email}
       Password: ${password}
       Prenom: ${prenom}
       Nom: ${nom}
     `);
-    alert('Vous venez de créer votre compte ! Maintenant connectez-vous !');
+    alert('Vous venez de créer votre compte ! Notez bien votre email et Mot de passe !');
     
     event.preventDefault();
   
@@ -40,8 +65,11 @@ export default function SignUp() {
         }
       })
       .catch((error) => console.log(error));
-
+      
+  }else{
+    alert('Veuillez remplir correctement le formulaire')
   }
+}
 
   return (
       <div className="pos-form">
@@ -55,6 +83,7 @@ export default function SignUp() {
 
       <label>
         <input
+        id="prenom"
         placeholder="Prénom"
           name="prenom"
           type="prenom"
@@ -65,6 +94,7 @@ export default function SignUp() {
 
       <label>
         <input
+        id="nom"
         placeholder="Nom"
           name="nom"
           type="nom"
@@ -92,11 +122,10 @@ export default function SignUp() {
       </label>
 
 
-      <button>S'inscrire</button>
+      <button className="btnSins">S'inscrire</button>
       <div class="white">Vous avez déjà un compte?</div>
      <Link to="/login"  class="white">Se connecter</Link>
     </form>
     </div>
   );
 }
-

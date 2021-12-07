@@ -5,6 +5,7 @@ import Login from './components/Login.js';
 import SignUp from './components/SignUp.js';
 import Home from './components/Home.js';
 import Nav from './components/Nav.js';
+import Profil from './components/Profil.js'
 import './styles/App.css';
 
 
@@ -31,10 +32,14 @@ function App(){
           <Header />
           <Login />
         </Route> 
-        <Route path="/home">
-          <Nav />
-          <Home />
-        </Route>      
+        <Route path="/home" >   
+        <Nav />  
+         <Home />    
+        </Route>    
+        <Route path="/profil" >  
+        <Nav /> 
+        <Profil />
+        </Route>        
       </Switch>
    </Router>  
    

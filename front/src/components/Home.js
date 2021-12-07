@@ -1,8 +1,10 @@
 import React from "react";
-
 import '../styles/Home.css'
+//import {Redirect} from "react-router-dom";
 
 export default function Home() {
+
+ 
     const [Message, setMessage] = React.useState("");
     
     
@@ -35,20 +37,20 @@ export default function Home() {
         .catch((error) => console.log(error));
   
     }
-  
+ 
     return (
         <div className="pos-form">
       <form className="formulaire1" onSubmit={handleSubmit}>
       
         <label>
-          <input
+          <button
           placeholder="Quoi de neuf ?"
             name="message"
             type="message"
             value={Message}
             onChange={e => setMessage(e.target.value)}
-            required />
-            <button>Publier</button>
+            required >Quoi de neuf ?</button>
+            
         </label>
    
         
