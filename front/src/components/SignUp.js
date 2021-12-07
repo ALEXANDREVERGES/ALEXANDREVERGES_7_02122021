@@ -46,6 +46,10 @@ export default function SignUp() {
   return (
       <div className="pos-form">
     <form className="formulaire" onSubmit={signupHandler}>
+    <div className="choix">
+    <Link to="/signup"  class="sins">S'inscrire</Link>
+    <Link to="/login"  class="sec">Se connecter</Link>
+  </div>
     <div className="espace-form"> Si vous n'avez pas de compte</div>
       <h1 className="white1">S'inscrire</h1>
 

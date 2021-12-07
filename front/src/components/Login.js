@@ -28,12 +28,17 @@ export default function Login() {
           .then(response => response.json())
           .then(function(res) {
                 localStorage.setItem("user", JSON.stringify(res));
+               
             })
           .catch((error) => console.log(error));
         }
     return (
         <div className="pos-form">
       <form className="formulaire" onSubmit={loginSubmit}>
+      <div className="choix">
+    <Link to="/signup"  class="sins1">S'inscrire</Link>
+    <Link to="/login"  class="sec1">Se connecter</Link>
+  </div>
       <div className="espace-form"> Si vous avez un compte</div>
         <h1 className="white1">Se connecter</h1>
         <label>

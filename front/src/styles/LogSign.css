@@ -45,7 +45,50 @@ a{
 a{
     text-decoration: none;
 }
-
+.choix{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+}
+.sins{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+.sec{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    opacity: 0.5;
+    border-radius: 5px;
+}
+.sins1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    opacity: 0.5;
+    border-radius: 5px;
+}
+.sec1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid white;
+    border-radius: 5px;
+    
+}
 input{
     width: 300px;
     height: 30px;
