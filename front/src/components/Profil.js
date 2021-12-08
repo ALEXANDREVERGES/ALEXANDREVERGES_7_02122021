@@ -6,14 +6,11 @@ function Profil(){
     const data  = JSON.parse(localStorage.getItem("user")) ;
     const [photo, setPhoto] = React.useState("");
     console.log(photo)
-    const photoSubmit = (event) =>{
+    const photoSubmit = (event) => {
         event.preventDefault();
-        localStorage.setItem("photo", photo);
-        
-        
+
     }
 
-   
 return(
     <div className="container_profil">
     <form className="profil" >
@@ -23,8 +20,8 @@ return(
         className="btnModif" 
         type="file"
         id="avatar" name="avatar"
-        accept="image/png, image/jpeg" onSubmit={photoSubmit} onChange={e => setPhoto(e.target.value)}/>
-        <img src="photo" />
+        accept="image/png, image/jpeg"  onSubmit={photoSubmit} onChange={e => setPhoto(e.target.value)}/>
+        <img size={64}  icon="user" src={photo} />
            
       
 

@@ -11,7 +11,8 @@ const db = mysql.createConnection({
     connectionLimit : 10,
     host            : 'localhost',
     user            : 'root',
-    password        : '159Counterstrike13004'
+    password        : '159Counterstrike13004',
+    database : "groupomania"
   });
   
   pool.getConnection(function(err, connection) {
