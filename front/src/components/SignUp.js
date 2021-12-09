@@ -11,6 +11,7 @@ export default function SignUp() {
   const [password, setPassword] = React.useState("");
   const [prenom, setPrenom] = React.useState("");
   const [nom, setNom] = React.useState("");
+  
 
   const signupHandler = (event) => {
     const regexName =/^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
@@ -41,6 +42,7 @@ export default function SignUp() {
       Password: ${password}
       Prenom: ${prenom}
       Nom: ${nom}
+      
     `);
     alert('Vous venez de créer votre compte ! Notez bien votre email et Mot de passe !');
     

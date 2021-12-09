@@ -31,11 +31,15 @@ export default function Login() {
       fetch("http://localhost:3000/auth/login", Options)
           .then(response => response.json())
           .then(function(res) {
-                localStorage.setItem("user", JSON.stringify(res));
-               
+            if(res){
+              localStorage.setItem("user", JSON.stringify(res));
+              history.push("/home");
+            } else{
+          history.push("/login");
+        }     
             })
-          .catch((error) => console.log(error));
-        }
+          
+          }
     return (
         <div className="pos-form">
       <form className="formulaire" onSubmit={loginSubmit}>
@@ -66,7 +70,7 @@ export default function Login() {
         </label>
   
   
-        <button className="btnSins" onClick={()=> {history.push('/home');}}>Connexion</button>
+        <button className="btnSins" /*</form>onClick={()=> {//history.push('/home');}}*/>Connexion</button>
         <div class="white">Vous n'avez pas de compte?</div>
        <Link to="/signup"  class="white">S'inscrire</Link>
       </form>

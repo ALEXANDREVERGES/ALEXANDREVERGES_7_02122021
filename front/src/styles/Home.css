@@ -10,11 +10,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border: 1px solid rgb(143, 121, 160);
-    background-color: rgb(143, 121, 160);
+    border: 1px solid rgb(148, 148, 148);
+    background-color: rgb(148, 148, 148);
     margin-top: -100px;
     border-radius: 15px;
-   
+    box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
     margin-right: 0px;
     border-radius: 0;
 }
@@ -22,4 +22,5 @@ button{
     width: 200%;
     height: 40px;
     border-radius: 10px;
+    color: black;
 }

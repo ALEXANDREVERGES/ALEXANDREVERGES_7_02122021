@@ -3,12 +3,12 @@ import '../styles/Nav.css'
 import{ Link } from "react-router-dom";
 
 function Nav() {
-    const data  = JSON.parse(localStorage.getItem("user")) 
+   // const data  = JSON.parse(localStorage.getItem("user")) 
     return (
         <div className="container-nav">
         <div className="nav">
             <Link to="/home" className="title">Groupomania </Link>
-            <Link to="/profil" className="title">{data[0].prenom}</Link>
+            <Link to="/profil" className="title">profil</Link>
 
         </div>
         </div>
