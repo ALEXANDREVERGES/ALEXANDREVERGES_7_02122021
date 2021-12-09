@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./config/db');
+
 const cors = require('cors');
 //importer le package HTTP de NODE JS pour avoir les outils pour créer le server
 const http = require('http');
