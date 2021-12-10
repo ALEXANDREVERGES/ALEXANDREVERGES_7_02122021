@@ -6,21 +6,12 @@ const jwt = require('jsonwebtoken');
 
 const db = require('../data/databaseConnect.js');
 const mysql = require("mysql");
-const User = require('../models/user');
-const user = require('../models/user');
-const maxAge = 3 * 24 * 60 *60 * 1000;
-const createToken = (iduser) => {
-  return jwt.sign({iduser}, process.env.JWT_RANDOM_TOKEN, 
-    { expiresIn: '24h' }
 
-  )
-}
 
 
 // Error Class
 
 require('dotenv').config();
-
 
 
 
@@ -39,9 +30,9 @@ exports.signup = async (req, res) => {
     };
    
     console.log(pass)
-    db.query("INSERT INTO user (nom, prenom, email, password ) VALUES (?,?,?,?)",[nom, prenom, email, pass], (err,result)=> {
+    db.query("INSERT INTO user (nom, prenom, email, password ) VALUES (?,?,?,?)",[nom, prenom, email, pass["password"]], (err,result)=> {
       console.log("result------>", result)
-      
+      console.log (pass["password"])
       if (!result) {
         res.status(200).json({ message: "Email déjà enregistré" });
       } else {
@@ -69,6 +60,7 @@ exports.signup = async (req, res) => {
 exports.login = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+  const iduser = req.body.iduser;
   const sql = `SELECT * FROM user WHERE email=?`
   db.query(sql, [email], (err, results) => {
     console.log("results", results[0].password)
@@ -85,7 +77,7 @@ exports.login = (req, res, next) => {
       } else {
         console.log("Connexion réussi !!");
         res.status(200).json({ 
-           userId: user._id ,
+           userId: iduser ,
           token: jwt.sign(
             { userId: iduser },
             `${process.env.JWT_RANDOM_TOKEN}`,
