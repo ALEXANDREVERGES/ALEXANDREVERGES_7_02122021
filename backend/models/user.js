@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('user', {
+module.exports = function(Sequelize, DataTypes) {
+    return Sequelize.define('user', {
         
         prenom: {
             type: DataTypes.STRING(30),
@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       
         
     }, {
-        sequelize,
+        Sequelize,
         tableName: 'user',
         timestamps: false,
         createdAt: 'created',

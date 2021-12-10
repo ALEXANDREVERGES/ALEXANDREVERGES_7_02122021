@@ -34,7 +34,7 @@ export default function SignUp() {
       (regexName.test(prenom) === true) &
       (regexName.test(nom) === true)  
     ) {
-      history.push("/home");
+      history.push("/login");
 
    
     console.log(`

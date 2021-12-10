@@ -19,11 +19,9 @@ const db = mysql.createConnection({
     if(err) throw err;
       connection.query( 'SELECT * FROM user', function(err, rows) {
   
-        console.log(pool._freeConnections.indexOf(connection)); // -1
   
         connection.release();
   
-        console.log(pool._freeConnections.indexOf(connection)); // 0
   
      });
   });

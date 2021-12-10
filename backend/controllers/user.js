@@ -2,11 +2,20 @@
 const bcrypt = require('bcrypt');
 //**npm install --save jsonwebtoken */
 const jwt = require('jsonwebtoken');
-const User = require('../models/user.js');
+
 
 const db = require('../data/databaseConnect.js');
 const mysql = require("mysql");
-const user = require('../models/user.js');
+const User = require('../models/user');
+const user = require('../models/user');
+const maxAge = 3 * 24 * 60 *60 * 1000;
+const createToken = (iduser) => {
+  return jwt.sign({iduser}, process.env.JWT_RANDOM_TOKEN, 
+    { expiresIn: '24h' }
+
+  )
+}
+
 
 // Error Class
 
@@ -31,6 +40,8 @@ exports.signup = async (req, res) => {
    
     console.log(pass)
     db.query("INSERT INTO user (nom, prenom, email, password ) VALUES (?,?,?,?)",[nom, prenom, email, pass], (err,result)=> {
+      console.log("result------>", result)
+      
       if (!result) {
         res.status(200).json({ message: "Email déjà enregistré" });
       } else {
@@ -42,7 +53,7 @@ exports.signup = async (req, res) => {
             { expiresIn: '24h' }
           )  
           });
-          user.save()
+          
       }
     });
   } catch (err) {
@@ -53,31 +64,42 @@ exports.signup = async (req, res) => {
 //*****On compare le mot de passe entré avec le hash (bcrypt.compare), si la comparaison n'est pas bonne (401)*/
 //*****Sinon si la comparaison est bonne, utilisateur a rentré des bonnes informations et on renvoie un userID et token  */
 
+
+
 exports.login = (req, res, next) => {
   const email = req.body.email;
- console.log(req)
-  db.query("SELECT * FROM user WHERE email='?'", [email], (err,user) => {
-  
-    if (err) {
-      return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+  const password = req.body.password;
+  const sql = `SELECT * FROM user WHERE email=?`
+  db.query(sql, [email], (err, results) => {
+    console.log("results", results[0].password)
+   
+    if (!results) {
+      return res.status(401).json({error: 'Utilisateur non trouvé !'})
     }
-    bcrypt.compare(req.body.password, user.password)
-      .then(valid => {
-        if (!valid) {
-          return res.status(401).json({ error: 'Mot de passe incorrect !' });
-        }console.log("user", user)
-        res.status(200).json({
-          userId: iduser,
-          //*****utilisation .sign pour encoder un nouveau token */
+    console.log ("password ----->",password ,"results---->", results[0].password)
+    bcrypt.compare(password, results[0].password) 
+    
+    .then(valid => {
+      if(!valid) {
+        return res.status(401).json({ error: 'Mot de passe incorrect !'});
+      } else {
+        console.log("Connexion réussi !!");
+        res.status(200).json({ 
+           userId: user._id ,
           token: jwt.sign(
             { userId: iduser },
             `${process.env.JWT_RANDOM_TOKEN}`,
-            { expiresIn: '24h' }
-          ) 
-        });
-      })
-      .catch(error => res.status(500).json({ error }));
+            { expiresIn: '24h'}
+          )
+        })
+      }
+    })
+  })
   
+  }
+   
+ 
   
-});
-}
+
+   
+   

@@ -33,8 +33,10 @@ export default function Login() {
           .then(function(res) {
             if(res){
               localStorage.setItem("user", JSON.stringify(res));
+              console.log(res)
               history.push("/home");
             } else{
+             
           history.push("/login");
         }     
             })
