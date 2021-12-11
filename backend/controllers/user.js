@@ -58,39 +58,41 @@ exports.signup = async (req, res) => {
 
 
 exports.login = (req, res, next) => {
+  const nom = req.body.nom;
+  const prenom = req.body.prenom;
   const email = req.body.email;
   const password = req.body.password;
   const iduser = req.body.iduser;
   const sql = `SELECT * FROM user WHERE email=?`
   db.query(sql, [email], (err, results) => {
-    console.log("results", results[0].password)
+    console.log("results", results)
    
     if (!results) {
       return res.status(401).json({error: 'Utilisateur non trouvé !'})
     }
     console.log ("password ----->",password ,"results---->", results[0].password)
     bcrypt.compare(password, results[0].password) 
-    
     .then(valid => {
       if(!valid) {
         return res.status(401).json({ error: 'Mot de passe incorrect !'});
-      } else {
+      }  
         console.log("Connexion réussi !!");
-        res.status(200).json({ 
-           userId: iduser ,
-          token: jwt.sign(
-            { userId: iduser },
-            `${process.env.JWT_RANDOM_TOKEN}`,
-            { expiresIn: '24h'}
-          )
+       return  res.status(200).json({ 
+          userId: iduser,
+          results:({results}),
+          token: jwt.sign({ userId: iduser },`${process.env.JWT_RANDOM_TOKEN}`,{ expiresIn: '24h'})
         })
-      }
-    })
+      })
+      .catch(error => res.status(500).json({ error }));
   })
   
   }
    
- 
+ //*************************************MODIFICATION PROFIL */
+
+ exports.modifyCount= (req, res, next) => {
+
+  };
   
 
    

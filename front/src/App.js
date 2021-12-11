@@ -7,7 +7,7 @@ import Home from './components/Home.js';
 import Nav from './components/Nav.js';
 import Profil from './components/Profil.js'
 import './styles/App.css';
-
+import Modification from './components/Modification.js'
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -39,7 +39,11 @@ function App(){
         <Route path="/profil" >  
         <Nav /> 
         <Profil />
-        </Route>        
+        </Route> 
+        <Route path="/modification" >  
+        <Nav /> 
+        <Modification />
+        </Route>               
       </Switch>
    </Router>  
    

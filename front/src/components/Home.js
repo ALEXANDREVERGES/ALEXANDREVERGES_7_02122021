@@ -42,7 +42,7 @@ export default function Home() {
         <div className="pos-form">
       <form className="formulaire1" onSubmit={handleSubmit}>
       
-        <label>
+        <label> Hey ! 
           <button
           placeholder="Quoi de neuf ?"
             name="message"

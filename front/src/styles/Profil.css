@@ -4,13 +4,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: blueviolet;
     font-size: 20px;
     font-weight: bold;
+    
 }
 .profil{
     padding-top: 30px;
-    width: 400px;
+    width: 600px;
+    border:1px solid rgb(211, 178, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(211, 178, 255);
+    box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
+    border-radius: 10px;
+}
+.profil1{
+    padding-top: 30px;
+    width: 500px;
     border:1px solid blueviolet;
     display: flex;
     justify-content: center;
@@ -23,7 +36,7 @@
 .margin_profil{
     padding-top: 20px;
     margin-bottom: 20px;
-    text-decoration: underline;
+   
 }
 .btnModif{
     width: 150px;
@@ -33,17 +46,29 @@
 .text_underline{
     display: flex;
     align-items: center;
-    text-decoration: underline;
+    
     margin-bottom: 15px;
+}
+.text_underline1{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.text_underline2{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-right: -30px;
 }
 .align{
     display: flex;
     align-items: center;
 }
 .container_img{
+   
     width: 100px;
     height: 100px;
-    border: 1px solid white;
+    border: 1px solid blueviolet;
     border-radius: 50px;
     
 }
@@ -53,11 +78,20 @@
     
     
 }
-.container_photo{
+.container_desc1{
+    width: 100%;
     display: flex;
-    width: 50%;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+.container_photo{
+    padding-left: 30px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 .container_info{
     display: flex;
@@ -66,4 +100,12 @@
     align-items: center;
     flex-direction: column;
     margin-left: -200px;
+}
+.container_info1{
+    display: flex;
+    width:100%;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-left: -50px;
 }

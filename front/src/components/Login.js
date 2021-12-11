@@ -31,12 +31,13 @@ export default function Login() {
       fetch("http://localhost:3000/auth/login", Options)
           .then(response => response.json())
           .then(function(res) {
-            if(res){
+            if(res.token && res.results){
               localStorage.setItem("user", JSON.stringify(res));
-              console.log(res)
+              console.log("res---->" ,res )
+              console.log("res.token--->",res.token)
               history.push("/home");
             } else{
-             
+          alert('Mauvais email ou mot de passe !')   
           history.push("/login");
         }     
             })

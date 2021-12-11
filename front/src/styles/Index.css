@@ -11,4 +11,9 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+  .fond{
+    background-image: url('../assets/icon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   
+  }
