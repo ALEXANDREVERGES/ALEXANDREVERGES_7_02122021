@@ -2,6 +2,7 @@ import '../styles/LogSign.css';
 import React from 'react';
 import{ Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import ('../components/Nav.js')
 
 export default function Login() {
 
@@ -10,6 +11,8 @@ export default function Login() {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
    
+
+
   
     const loginSubmit = (event) => {
       console.log(`

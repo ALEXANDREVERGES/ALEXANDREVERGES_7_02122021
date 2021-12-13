@@ -18,4 +18,8 @@
     justify-content: center;
     background-color: blueviolet;
 }
-
+#userBdd{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}

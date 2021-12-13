@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const db = require('../data/databaseConnect.js');
 const mysql = require("mysql");
-
+const user = require('../models/user');
 
 
 // Error Class
@@ -57,12 +57,12 @@ exports.signup = async (req, res) => {
 
 
 
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
   const nom = req.body.nom;
   const prenom = req.body.prenom;
   const email = req.body.email;
   const password = req.body.password;
-  const iduser = req.body.iduser;
+  const iduser = req.params.iduser;
   const sql = `SELECT * FROM user WHERE email=?`
   db.query(sql, [email], (err, results) => {
     console.log("results", results)
@@ -70,7 +70,10 @@ exports.login = (req, res, next) => {
     if (!results) {
       return res.status(401).json({error: 'Utilisateur non trouvé !'})
     }
+    const {id: iduser} = req.params;
+    console.log("req.params--->" , req.params)
     console.log ("password ----->",password ,"results---->", results[0].password)
+    console.log("req.body---->",req.body)
     bcrypt.compare(password, results[0].password) 
     .then(valid => {
       if(!valid) {
@@ -88,12 +91,44 @@ exports.login = (req, res, next) => {
   
   }
    
- //*************************************MODIFICATION PROFIL */
+ //*************************************MODIFICATION PROFIL**************************************************/
 
- exports.modifyCount= (req, res, next) => {
-
-  };
+ exports.modifyCount= (req, res) => {
   
+ // console.log("req.params.id---->", id)
+ console.log("req.body--->", req.body)
+  const nom = req.body.nom;
+  const prenom = req.body.prenom;
+  const email = req.body.email;
+  
+   db.query("UPDATE user SET  nom=?, prenom=? WHERE email=? ", [nom, prenom, email], (err, result)=>{
+     
+   //  console.log("result--->", result)
+     if(err) {
+      console.log(err)
+     }else {
+    res.send(result)
+     }
+   })
+};
 
+//************************************GET USER*******************************************************************/
+exports.getUser = (req, res) => {
+  console.log("req.params--->", req.params)
+console.log("req.body--->", req.body)
+const iduser= req.params.iduser;
+console.log("iduser--->", iduser)
+const id = {
+ iduser: req.params.iduser
+} 
+db.query("SELECT * FROM user WHERE iduser=?", id["iduser"], (err, result)=> {
+  if(err){
+    console.log(err)
+  } else {
+    res.send(result)
+    console.log("result",result)
+  }
+})
+}
    
    

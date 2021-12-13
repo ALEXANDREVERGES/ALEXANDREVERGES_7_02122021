@@ -23,7 +23,7 @@
 }
 .profil1{
     padding-top: 30px;
-    width: 500px;
+    width: 600px;
     border:1px solid blueviolet;
     display: flex;
     justify-content: center;
@@ -63,6 +63,7 @@
 .align{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .container_img{
    
@@ -108,4 +109,8 @@
     align-items: center;
     flex-direction: column;
     margin-left: -50px;
+}
+label{
+    color: white;
+    font-size: 15px;
 }

@@ -5,11 +5,13 @@ const router = express.Router();
 
 const passwordControl = require('../middleware/password');
 const userCtrl = require('../controllers/user');
-const upload = require('../middleware/multer-config');
+const multer = require('../middleware/multer-config');
+const auth = require('../middleware/auth.js')
 
 
 router.post('/signup', passwordControl, userCtrl.signup);
 router.post('/login', userCtrl.login);
-router.put('./modification', upload )
+router.put('/modification', userCtrl.modifyCount );
+router.get('/get/:iduser', userCtrl.getUser)
 
 module.exports = router;

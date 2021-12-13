@@ -1,21 +1,18 @@
 import React from "react";
 import '../styles/Home.css'
 //import {Redirect} from "react-router-dom";
-
 export default function Home() {
 
- 
     const [Message, setMessage] = React.useState("");
+ 
+
     
-    
-  
+
+
     const handleSubmit = (event) => {
       console.log(`
-        Message: ${Message}
-        
-       
+        Message: ${Message}    
       `);
-      
       event.preventDefault();
     
       const requestOptions = {
@@ -42,7 +39,7 @@ export default function Home() {
         <div className="pos-form">
       <form className="formulaire1" onSubmit={handleSubmit}>
       
-        <label> Hey ! 
+        <label className="labelHome"> Hey ! 
           <button
           placeholder="Quoi de neuf ?"
             name="message"
