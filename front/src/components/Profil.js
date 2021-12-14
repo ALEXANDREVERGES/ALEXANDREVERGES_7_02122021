@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 function Profil(){
 
     const data  = JSON.parse(localStorage.getItem("user")) ;
-    const [photo, setPhoto] = React.useState("");
+   
     //  console.log("result-nav.js->", result)
   
    
@@ -34,42 +34,40 @@ function Profil(){
     userBdd2.innerHTML = `
      
     <div className="align">
-    <div id="prenom" className="text_underline">Prénom: ${data[0].nom} </div>  
+    <div id="nom" className="text_underline">Nom: ${data[0].nom} </div>  
     </div>
     `;
     const userBdd3 = document.getElementById("email");
     userBdd3.innerHTML = `
      
     <div className="align">
-    <div id="prenom" className="text_underline">Prénom: ${data[0].email} </div>  
+    <div id="email" className="text_underline">Email: ${data[0].email} </div>  
     </div>
     `;
       }
 
 
-    const photoSubmit = (event) => {
-        event.preventDefault();
-    }
+   
     let history = useHistory();
 return(
 <div className="container_profil">
     <form className="profil" >
         <div className="container_desc">
             <div className="container_photo">
-                <div className="container_img">
-                <img src=""></img>
-                </div>
+                <div className="container_img"></div>
+                <div className="text">Groupomania</div>
+                
             </div>
             <div className="container_info">
-                
+            <div className="align">
+                <div id="nom" className="text_underline"></div>
+                    
+            </div>
                 <div className="align">
                     <div id="prenom" className="text_underline"></div>
                     
                 </div>
-                <div className="align">
-                    <div id="nom" className="text_underline"></div>
-                    
-                </div>
+               
                 <div className="align">
                     <div id="email" className="text_underline"></div>
                     

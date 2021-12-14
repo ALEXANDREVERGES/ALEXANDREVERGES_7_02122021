@@ -1,11 +1,14 @@
-import React, { useReducer } from "react";
+
+
+import React from "react";
 import '../styles/Nav.css'
 import{ Link } from "react-router-dom";
+
 
 function Nav() {
   //  console.log("result-nav.js->", result)
    const data  = JSON.parse(localStorage.getItem("user")) 
-   const email = data.results.results[0].email;
+   
    const id = data.results.results[0].iduser;
   
 
@@ -27,7 +30,7 @@ function Nav() {
    function addBdd(data){        
  const userBdd = document.getElementById("userBdd");
  userBdd.innerHTML = `
- <Link to="/profil" id="userBdd" className="title">${data[0].nom} ${data[0].prenom}</Link>
+ <Link to="/profil" id="userBdd" className="title"> ${data[0].prenom} ${data[0].nom}</Link>
  `;
    }
 
@@ -37,6 +40,7 @@ function Nav() {
         <div className="nav">
             <Link to="/home" className="title">Groupomania </Link>
             <Link to="/profil" id="userBdd"></Link>
+            
 
         </div>
         </div>

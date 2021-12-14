@@ -6,6 +6,7 @@ const http = require('http');
 const app = express();
 const path = require('path')
 const userRoutes = require('./routes/user');
+const postRoutes = require('./routes/post')
 const bodyParser = require ('body-parser');
 app.use(cors());
 app.use(express.json())
@@ -58,6 +59,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 //************************************************************************************************************************** */
 app.use('/auth', userRoutes);
+app.use('/api', postRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 const server = http.createServer(app);

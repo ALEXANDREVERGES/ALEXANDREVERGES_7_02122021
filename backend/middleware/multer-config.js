@@ -17,6 +17,8 @@ const storage = multer.diskStorage({
     callback(null, name + Date.now() + '.' + extension);// on def les parametres du call back
   }
 });
+//console.log("storage--multer-config-->",storage)
+
 
 module.exports = multer({ storage: storage }).single('image');// on exporte multer en lui passant notre constante storage
 // .single indique que l'on va gérer uniquement le téléchargement d'image

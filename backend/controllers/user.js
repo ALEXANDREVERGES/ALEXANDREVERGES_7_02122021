@@ -38,11 +38,11 @@ exports.signup = async (req, res) => {
       } else {
         res.status(201).json({
            message: "Compte Créé !",
-           token: jwt.sign(
-            { userId: iduser },
-            `${process.env.JWT_RANDOM_TOKEN}`,
-            { expiresIn: '24h' }
-          )  
+         //  token: jwt.sign(
+         //   { userId: iduser },
+          //  `${process.env.JWT_RANDOM_TOKEN}`,
+           // { expiresIn: '24h' }
+          //)  
           });
           
       }
@@ -83,7 +83,7 @@ exports.login = (req, res) => {
        return  res.status(200).json({ 
           userId: iduser,
           results:({results}),
-          token: jwt.sign({ userId: iduser },`${process.env.JWT_RANDOM_TOKEN}`,{ expiresIn: '24h'})
+          token: jwt.sign({ userId: iduser },process.env.JWT_RANDOM_TOKEN ,{ expiresIn: '24h'})
         })
       })
       .catch(error => res.status(500).json({ error }));
@@ -94,41 +94,49 @@ exports.login = (req, res) => {
  //*************************************MODIFICATION PROFIL**************************************************/
 
  exports.modifyCount= (req, res) => {
-  
+  try{
  // console.log("req.params.id---->", id)
  console.log("req.body--->", req.body)
   const nom = req.body.nom;
   const prenom = req.body.prenom;
   const email = req.body.email;
-  
-   db.query("UPDATE user SET  nom=?, prenom=? WHERE email=? ", [nom, prenom, email], (err, result)=>{
+  const password= req.body.password;
+
+  const id = {
+    iduser: req.params.iduser
+   } ;
+   
+   db.query("UPDATE user SET  nom=?, prenom=?, email=? WHERE iduser=? ", [nom, prenom, email, id["iduser"] ], (err, result)=>{
      
    //  console.log("result--->", result)
      if(err) {
       console.log(err)
      }else {
-    res.send(result)
+   // res.send(result)
+    res.status(200).json({message: 'Modification effectuée !'})
      }
    })
+  }catch (err) {
+    res.status(400).json({ message: "Failed registration", err });
+  }
 };
 
 //************************************GET USER*******************************************************************/
 exports.getUser = (req, res) => {
-  console.log("req.params--->", req.params)
-console.log("req.body--->", req.body)
+  //console.log("req.params--->", req.params)
+//console.log("req.body--->", req.body)
 const iduser= req.params.iduser;
-console.log("iduser--->", iduser)
+//console.log("iduser--->", iduser)
 const id = {
  iduser: req.params.iduser
 } 
 db.query("SELECT * FROM user WHERE iduser=?", id["iduser"], (err, result)=> {
   if(err){
-    console.log(err)
+    //console.log(err)
   } else {
     res.send(result)
-    console.log("result",result)
+   // console.log("result--->",result)
   }
 })
 }
-   
-   
+

@@ -66,7 +66,9 @@
     justify-content: center;
 }
 .container_img{
-   
+   background-image: url('../assets/globe.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
     width: 100px;
     height: 100px;
     border: 1px solid blueviolet;
@@ -93,6 +95,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+   flex-direction: column;
 }
 .container_info{
     display: flex;
@@ -112,5 +115,10 @@
 }
 label{
     color: white;
+    font-size: 15px;
+}
+.text{
+    color: black;
+    margin-left: 5px;
     font-size: 15px;
 }

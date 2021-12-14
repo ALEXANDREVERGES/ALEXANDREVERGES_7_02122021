@@ -1,31 +1,93 @@
-.pos-form{
+.container_home{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px;
+    flex-direction: column;
+    margin-top: 0px;
+    
+}
+.pos-form1{
+    border: 3px solid rgb(241, 240, 240);
+    border-radius: 0px;
+    width: 100%;
+   background-color: rgb(241, 240, 240);
 }
 .formulaire1{
     width: 100%;
-    padding-bottom: 20px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+   
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    border: 1px solid rgb(211, 178, 255);
-    background-color: rgb(211, 178, 255);
-    margin-top: -100px;
-    border-radius: 15px;
-    box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
+    border-radius: 0px;
     margin-right: 0px;
     border-radius: 0;
 }
-button{
-    width: 200%;
+.btnModif{
+    width: 50px;
     height: 40px;
     border-radius: 10px;
     color: black;
+    margin-right: -20px;
 }
 .labelHome{
     color: blueviolet;
     font-size: 20px;
     font-weight: bold;
+}
+#post{
+    width: 150%;
+    height: 40px;
+    height: 70px;
+    border-radius: 0px;
+}
+.btnPublier{
+    width: 80px;
+    height: 25px;
+}
+img{
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+}
+.container_post{
+    border: 1px solid rgb(209, 209, 209);
+    height: auto;
+    width: 700px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 0px;
+    background-color: rgb(241, 240, 240);
+    padding-right: 10px;
+}
+   
+
+.structurePost{
+    width: 100%;
+    background-color: rgb(241, 240, 240);
+    padding-top:10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.structureNom{
+    padding: 5px;
+   margin-top: -30px;
+    background-color: rgb(241, 240, 240);
+    font-weight: bold;
+    font-size: 14px;
+}
+textarea{
+    border: 1px solid rgb(242, 228, 255);
+    width: 400px;
+
 }
