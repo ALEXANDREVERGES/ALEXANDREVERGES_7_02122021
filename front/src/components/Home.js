@@ -45,7 +45,17 @@ export default function Home() {
   
     }
 /********************************récupération commentaires TABLE post mysql************************************************************** */
-    fetch("http://localhost:3000/api/get/commentaire")
+
+const token = user.token;
+console.log("token---homeJS-->", token)
+    fetch(`http://localhost:3000/api/get/commentaire`, 
+    {
+      headers:
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
     .then ((res) => res.json())  
     .then ((data) => {
    

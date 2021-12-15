@@ -5,8 +5,8 @@ function Modification(){
 
     const data  = JSON.parse(localStorage.getItem("user")) ;
     const id = data.results.results[0].iduser;
-    console.log("data---->",id)
-   
+    console.log("data--ModificationJS-->",data.token)
+   const token = data.token;
     const [email1, setEmail1] = React.useState("");
     const [prenom1, setPrenom1] = React.useState("");
     const [nom1, setNom1] = React.useState("");
@@ -40,7 +40,7 @@ function Modification(){
         event.preventDefault();
         const formModify = {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json" ,'Authorization': `Bearer ${token}`},
             body: JSON.stringify({
               iduser:id,
               nom: nom1,
