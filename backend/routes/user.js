@@ -10,8 +10,8 @@ const auth = require('../middleware/auth.js')
 
 
 router.post('/signup', passwordControl, userCtrl.signup);
-router.post('/login', userCtrl.login);
-router.put('/modification/:iduser',   userCtrl.modifyCount );
+router.post('/login',  userCtrl.login);
+router.put('/modification/:iduser', userCtrl.modifyCount );
 router.get('/get/:iduser', userCtrl.getUser)
 
 

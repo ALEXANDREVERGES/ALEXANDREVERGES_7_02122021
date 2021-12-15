@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 
 
 const db = require('../data/databaseConnect.js');
-const mysql = require("mysql");
-const user = require('../models/user');
+
+
 
 
 // Error Class
@@ -65,15 +65,17 @@ exports.login = (req, res) => {
   const iduser = req.params.iduser;
   const sql = `SELECT * FROM user WHERE email=?`
   db.query(sql, [email], (err, results) => {
-    console.log("results", results)
+    
    
-    if (!results) {
+    if (err) {
       return res.status(401).json({error: 'Utilisateur non trouvé !'})
     }
-    const {id: iduser} = req.params;
-    console.log("req.params--->" , req.params)
-    console.log ("password ----->",password ,"results---->", results[0].password)
-    console.log("req.body---->",req.body)
+    console.log(results)
+    
+   // console.log("req.params--->" , req.params)
+   // console.log ("password ----->",password ,"results.password---->", results[0].password)
+    console.log ("results.iduser---->", results[0].iduser)
+   // console.log("req.body---->",req.body)
     bcrypt.compare(password, results[0].password) 
     .then(valid => {
       if(!valid) {
@@ -81,10 +83,15 @@ exports.login = (req, res) => {
       }  
         console.log("Connexion réussi !!");
        return  res.status(200).json({ 
-          userId: iduser,
+          iduser: results[0].iduser,
           results:({results}),
-          token: jwt.sign({ userId: iduser },process.env.JWT_RANDOM_TOKEN ,{ expiresIn: '24h'})
+          token: jwt.sign(
+            { userId: results[0].iduser },
+            process.env.JWT_RANDOM_TOKEN,
+            { expiresIn: '24h'})
+         
         })
+     
       })
       .catch(error => res.status(500).json({ error }));
   })

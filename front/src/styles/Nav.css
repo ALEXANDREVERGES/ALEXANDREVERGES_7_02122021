@@ -24,3 +24,17 @@
     font-size: 20px;
     font-weight: bold;
 }
+.container_nav{
+    display: flex;
+
+}
+.navBtn{
+margin-left: 15px;
+color: white;
+font-weight: bold;
+cursor: pointer;
+}
+.navBtn:hover{
+    background-color: white;
+    color: blueviolet;
+}

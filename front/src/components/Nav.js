@@ -34,13 +34,24 @@ function Nav() {
  `;
    }
 
+   const logoutHandler = async () => {
+    localStorage.clear();
+    alert('Vous venez de vous déconnecter ! A bientôt !!')
+    window.location.href = "/";
+  };
+ 
 
     return (
         <div className="container-nav">
         <div className="nav">
             <Link to="/home" className="title">Groupomania </Link>
             <Link to="/profil" id="userBdd"></Link>
+            <div className="container_nav">
+            <Link to="/home" className="navBtn" >Acceuil</Link>
+            <Link to="/profil" className="navBtn">Profil</Link>
+            <div className="navBtn" onClick={logoutHandler}>Déconnexion</div>
             
+            </div>
 
         </div>
         </div>
