@@ -146,4 +146,15 @@ db.query("SELECT * FROM user WHERE iduser=?", id["iduser"], (err, result)=> {
   }
 })
 }
+//*******************************DELETE USER *************************************************************/
+exports.deleteUser = (req, res) => {
+const iduser = req.params.iduser;
+console.log("iduser--deleteBack-->", iduser)
+db.query("DELETE FROM user WHERE iduser=?", [iduser], (err, result)=> {
+  if(err){
 
+  } else {
+    res.send(result)
+  }
+})
+}

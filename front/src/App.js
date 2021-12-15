@@ -8,7 +8,7 @@ import Nav from './components/Nav.js';
 import Profil from './components/Profil.js'
 import './styles/App.css';
 import Modification from './components/Modification.js'
-
+import Delete from './components/Delete.js'
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -43,10 +43,12 @@ function App(){
         </Route> 
         <Route path="/modification" >  
         <Nav /> 
-        <Modification />
-    
-        
-        </Route>               
+        <Modification />   
+        </Route>        
+        <Route path="/delete" >  
+        <Nav /> 
+        <Delete />
+        </Route>        
       </Switch>
    </Router>  
    

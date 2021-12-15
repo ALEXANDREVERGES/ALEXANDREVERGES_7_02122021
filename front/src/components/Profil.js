@@ -75,7 +75,10 @@ return(
                 
             </div>
         </div>
+        <div>
             <button className="btnModif" onClick={()=> {history.push('/modification');}}>Mofifier profil</button>
+            <button className="btnModif" onClick={()=> {history.push('/delete');}}>Supprimer compte</button>
+            </div>
     </form>
 
 

@@ -1,0 +1,28 @@
+.container_delete{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+.nonoui{
+    color: black;
+    margin-left: 15px;
+    font-weight: bold;
+    
+}
+.nonoui:hover{
+    cursor: pointer;
+    background-color: white;
+    color: blueviolet;
+}
+.delete{
+    background-color: rgb(211, 178, 255);
+    padding: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
+}
+.margin_delete{
+    margin-bottom: 20px;
+}

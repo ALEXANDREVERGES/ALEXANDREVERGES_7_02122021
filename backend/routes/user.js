@@ -13,6 +13,7 @@ router.post('/signup', passwordControl, userCtrl.signup);
 router.post('/login',  userCtrl.login);
 router.put('/modification/:iduser',auth, userCtrl.modifyCount );
 router.get('/get/:iduser', userCtrl.getUser)
+router.delete('/delete/:iduser', auth, userCtrl.deleteUser)
 
 
 module.exports = router;
