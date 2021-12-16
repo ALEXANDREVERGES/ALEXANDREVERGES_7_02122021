@@ -98,3 +98,9 @@ textarea{
     justify-content: center;
     align-items: center;
 }
+.choice{
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}

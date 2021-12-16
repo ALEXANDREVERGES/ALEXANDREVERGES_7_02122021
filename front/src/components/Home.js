@@ -14,7 +14,7 @@ export default function Home() {
   const id = user.results.results[0].iduser;
     const [post, setPost] = React.useState("");
     const [photo, setPhoto] = React.useState("");
-   
+   const [showComments, setShowComments] = React.useState(false);
     const postSubmit = (event) => {
      
      
@@ -102,10 +102,14 @@ console.log("token---homeJS-->", token)
         <div class="container_structure_post">
           <div class="structurePost">${data[k].commentaire}</div>
           <img class="img_post" src="data[k].images">
-          <div>Commentaires / Like / Dislike </div>
+          <div class="choice">
+          <div><i class="far fa-comment"></i></div>
+          <div><i class="far fa-thumbs-up"></i></div>
+          <div><i class="far fa-thumbs-down"></i></div>   
+         </div>
          
         </div>
-        <button class="btnModif1">Modifier</button>
+        <button class="btnModif1"><i class="fas fa-pen"></i></button>
       </div>
       `;
       if(k === data.length){
@@ -133,7 +137,7 @@ console.log("token---homeJS-->", token)
             </label> 
             
             <input type="file" accept="image/*"  onChange={e =>setPhoto (e.target.value)}/>
-            <button className="btnPublier">Publier</button>
+            <button className="btnPublier"><i class="far fa-paper-plane"></i> Publier</button>
          
 
           </form>
@@ -141,7 +145,8 @@ console.log("token---homeJS-->", token)
         
       <div>
         <div id="nom"></div>
-        <div id="postBdd"></div>
+        <div id="postBdd" ></div>
+        
         </div>
         </div>
        

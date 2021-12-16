@@ -25,16 +25,24 @@
     font-weight: bold;
 }
 .container_nav{
+    width: 200px;
     display: flex;
-
+justify-content: space-around;
 }
 .navBtn{
+
 margin-left: 15px;
 color: white;
 font-weight: bold;
 cursor: pointer;
+font-size: 20px;
 }
 .navBtn:hover{
-    background-color: white;
     color: blueviolet;
+    border: 1px solid white;
+    padding: 3px;
+    background-color: white;
+    border-radius: 5px;
+
+
 }

@@ -47,9 +47,9 @@ function Nav() {
             <Link to="/home" className="title">Groupomania </Link>
             <Link to="/profil" id="userBdd"></Link>
             <div className="container_nav">
-            <Link to="/home" className="navBtn" >Acceuil</Link>
-            <Link to="/profil" className="navBtn">Profil</Link>
-            <div className="navBtn" onClick={logoutHandler}>Déconnexion</div>
+            <Link to="/home" className="navBtn" title="Acceuil"><i class="fas fa-home"></i></Link>
+            <Link to="/profil" className="navBtn" title="profil"><i class="far fa-id-badge"></i></Link>
+            <div className="navBtn" onClick={logoutHandler} title="déconnexion"><i class="fas fa-sign-out-alt"></i></div>
             
             </div>
 
