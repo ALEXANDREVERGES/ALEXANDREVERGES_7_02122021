@@ -61,6 +61,7 @@ img{
     display: flex;
     justify-content:space-between;
     align-items: center;
+  
     border-radius: 0px;
     background-color: rgb(241, 240, 240);
     padding-right: 10px;
@@ -90,4 +91,10 @@ textarea{
     border: 1px solid rgb(242, 228, 255);
     width: 400px;
 
+}
+.container_structure_post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

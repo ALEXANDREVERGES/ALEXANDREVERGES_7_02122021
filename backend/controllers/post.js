@@ -2,33 +2,20 @@ const db = require('../data/databaseConnect.js');
 const fs = require('fs');
 
 exports.createPost = (req, res, next) => {
-    let { body, file } = req;
-    if (!file) delete req.body.post_image;
-    console.log("req.body---postJS-->", body)
-   
-    const sqlInsert = "INSERT INTO post SET ?";
-  db.query(sqlInsert, body, (err, result) => {
-    if (err) {
-      res.status(404).json({ err });
-      throw err;
-    }
-    // post_id will be equal to the post inserted, and will be reused to link the image at the correct post in the below query
-    console.log("res--postJS-->", res)
-    const post_id = result.insertId;
-    if (file) {
-      const sqlInsertImage = `INSERT INTO images (image_url, post_id) VALUES ("${file.filename}", ${post_id})`;
-      db.query(sqlInsertImage, (err, result) => {
-        if (err) {
-          res.status(404).json({ err });
-          throw err;
-        }
-        res.status(200).json(result);
-      });
-    } else {
-      res.status(200).json(result);
-    }
-  });
-};
+  const commentaire = req.body.commentaire;
+  const iduser = req.body.iduser;
+  const images = req.body.images;
+  console.log("req.body---postJS-->", req.body)
+  db.query("INSERT INTO post (commentaire, iduser, images) VALUES(?,?,?)",[commentaire, iduser, images], (err, result) => {
+  if(err){
+    res.status(400).json({err});
+  } 
+    res.status(200).json({message : "Publication effectuée !" });
+  
+})
+}
+
+
 
 exports.getPost = (req, res) => {
  // console.log(req)
@@ -38,7 +25,7 @@ exports.getPost = (req, res) => {
    //   console.log(err)
     } else {
       res.send(result)
-   //   console.log("result---postBack--->",result)
+     console.log("result---postBack--->",result)
     }
   })
  

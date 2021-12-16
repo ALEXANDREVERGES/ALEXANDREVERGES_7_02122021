@@ -6,7 +6,7 @@ import{ Link } from "react-router-dom";
 
 
 function Nav() {
-  //  console.log("result-nav.js->", result)
+ 
    const data  = JSON.parse(localStorage.getItem("user")) 
    
    const id = data.results.results[0].iduser;
@@ -21,8 +21,8 @@ function Nav() {
    .then ((res) => res.json())  
    .then ((data) => {
   
-       console.log("data--->", data)
-       console.log("data-password-->", data[0].password)
+       
+     
        
        addBdd(data);
    })

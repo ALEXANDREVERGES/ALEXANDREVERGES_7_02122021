@@ -4,7 +4,7 @@ const cors = require('cors');
 //importer le package HTTP de NODE JS pour avoir les outils pour créer le server
 const http = require('http');
 const app = express();
-const path = require('path')
+const path = require('path');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post')
 const bodyParser = require ('body-parser');

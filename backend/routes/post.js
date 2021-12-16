@@ -6,7 +6,7 @@ const auth = require('../middleware/auth.js');
 const postCtrl  = require('../controllers/post.js');
 
 
-router.post('/post',multer,auth, postCtrl.createPost);
+router.post('/post',auth, postCtrl.createPost);
 router.get('/get/commentaire',auth, postCtrl.getPost);
 
 
