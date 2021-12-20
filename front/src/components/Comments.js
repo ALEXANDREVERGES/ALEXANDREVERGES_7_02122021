@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
+import CardComments from "./CardComments";
+
+
 
 function Comments() {
 const [commentaires, setCommentaires] = useState([]);
+const [showComments, setShowComments] = useState(false);
+//const [delete, setDelete] = useState(false);
 //var commentaire;
 //const commentaire=[];
 const user  = JSON.parse(localStorage.getItem("user")) 
@@ -18,7 +23,7 @@ useEffect(() => {
   .then ((res) => res.json())  
   .then ((data) => {
     if (data) {
-     console.log("data", data) 
+    // console.log("data", data) 
      setCommentaires(data);
      
     }
@@ -29,8 +34,8 @@ useEffect(() => {
    
     
 
-console.log("commentaires----->", commentaires)
-console.log(commentaires, typeof(commentaires))
+//console.log("commentaires----->", commentaires)
+//console.log(commentaires, typeof(commentaires))
 
 
     return(
@@ -38,38 +43,25 @@ console.log(commentaires, typeof(commentaires))
 {
   commentaires.map((item)=>(
     <div class="container_post">
-    <div class="structureNom">{item.prenom} {item.nom}</div>
-    <div class="container_structure_post">
-      <div class="structurePost">{item.commentaire}</div>
-      <img class="img_post" src="{item.images}"/>
-      <div class="choice">
-      <div><i class="far fa-comment"></i></div>
-      <div><i class="far fa-thumbs-up"></i></div>
-      <div><i class="far fa-thumbs-down"></i></div>   
-     </div>
-    </div>
-    <button class="btnModif1"><i class="fas fa-pen"></i></button>
-  </div>
-  ))}
-    
-
-        {/* {commentaire.map((comment) => (
-            <div class="container_post">
-        <div class="structureNom">${comment?.name} ${comment?.prenom}</div>
-        <div class="container_structure_post">
-          <div class="structurePost">${comment?.commentaire}</div>
-          <img class="img_post" src=""/>
-          <div class="choice">
-          <div><i class="far fa-comment"></i></div>
+      <div class="structureNom">{item.prenom} {item.nom}</div>
+      <div class="container_structure_post">
+        <div class="structurePost">{item.commentaire}</div>
+        <img class="img_post" src="{item.images}"/>
+        <div class="choice">
+          <div className="cardCom">
+            <div onClick={()=> setShowComments(!showComments)}><i class="far fa-comment"></i></div>
+            {showComments && <CardComments/>}
+          </div>
           <div><i class="far fa-thumbs-up"></i></div>
           <div><i class="far fa-thumbs-down"></i></div>   
-         </div>
         </div>
-        <button class="btnModif1"><i class="fas fa-pen"></i></button>
       </div>
-        ))} */}
-        
-   
+      <div className="cardCom">
+        <button  class="btnModif1"><i class="fas fa-pen"></i></button>
+        <button  class="btnModif1"><i class="fa-regular fa-trash-can"></i></button> 
+      </div>
+    </div>
+  ))}
 </div>
 )
 
