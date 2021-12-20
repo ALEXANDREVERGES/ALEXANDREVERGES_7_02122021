@@ -9,6 +9,7 @@ module.exports = (req, res, next) => { // On exporte un middleware //
         const decodedToken = jwt.verify(token, process.env.JWT_RANDOM_TOKEN);// On décode le token, la clé doit correspondre à celle de la fontion login
       //  console.log("decodedToken--->" , decodedToken)
         const userId = decodedToken.userId;
+        
         if (req.body.userId && req.body.userId!== userId) { // Si l'userId du corps de la requête est différent de userId //
             throw 'User ID non valable'; // Throw pour renvoyer l'erreur //
         } else {

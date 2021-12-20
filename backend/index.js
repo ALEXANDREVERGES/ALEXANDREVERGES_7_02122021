@@ -60,7 +60,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //************************************************************************************************************************** */
 app.use('/auth', userRoutes);
 app.use('/api', postRoutes);
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('./images', express.static(path.join(__dirname, "images")));
 
 const server = http.createServer(app);
 //**écouteur d'évènements consignant le port ou le canal nommé sur lequel le serveur s'exécute dans la console*/

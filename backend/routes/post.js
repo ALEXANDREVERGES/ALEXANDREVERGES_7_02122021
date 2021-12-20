@@ -6,8 +6,8 @@ const auth = require('../middleware/auth.js');
 const postCtrl  = require('../controllers/post.js');
 
 
-router.post('/post',auth, postCtrl.createPost);
+router.post('/post',auth ,multer ,postCtrl.createPost);
 router.get('/get/commentaire',auth, postCtrl.getPost);
-
+router.get('/get/commentaire/:id', postCtrl.getOnePost);
 
 module.exports = router;
