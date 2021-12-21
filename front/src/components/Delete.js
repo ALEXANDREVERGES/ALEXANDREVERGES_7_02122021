@@ -9,12 +9,12 @@ function Delete(){
 console.log("token-et-id---delete.js----->", token, id)
     console.log("user--delete-->", user)
     const deleteHandler = async () => {
-        const del = {
+        const delcom = {
             method: "DELETE",
            headers: { "Content-Type": "application/json" ,'Authorization': `Bearer ${token}`}
           }
          
-         fetch(`http://localhost:3000/auth/delete/${id}`, del)
+         fetch(`http://localhost:3000/auth/delete/${id}`, delcom)
          .then((res) => {
              alert('Votre compte est supprimé ! A bienôt !')
          }) 

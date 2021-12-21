@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardComments from "./CardComments";
-
+import "../styles/CardComments.css"
 
 
 function Comments() {
@@ -25,40 +25,74 @@ useEffect(() => {
     if (data) {
     // console.log("data", data) 
      setCommentaires(data);
-     
+    
     }
     
   }).catch((error) => console.log(error));
- 
+  // console.log("commentaires--->", commentaires)
 }, [])
-   
-    
 
+
+
+
+
+//*****************BOUTON SUPPRIMER POST ******************/
+let btnDeleteCom = document.getElementsByClassName('btnDeleteCom');
+// console.log("btnDeleteCom", btnDeleteCom)
+for(let l = 0; l < btnDeleteCom.length; l++){
+  btnDeleteCom[l].addEventListener("click",(event) =>{
+    event.preventDefault();
+    let id = commentaires[l].id;
+  //  const user  = JSON.parse(localStorage.getItem("user")) 
+    
+   
+    const iduser= user.iduser;
+    const idcom = commentaires[l].iduser;
+    
+    // console.log("iduser",iduser)
+    // console.log("idcom",idcom)
+    const delpost = {
+      method: "DELETE",
+     headers: { "Content-Type": "application/json" ,'Authorization': `Bearer ${token}`}
+    }
+  if(iduser === idcom){
+    fetch(`http://localhost:3000/api/delete/${id}`,delpost, 
+  )
+   .then((res) => {
+    //  console.log("res", res)
+     window.location="/home"
+   }) .catch((error) => console.log(error));
+
+   } else {
+     alert("Ce n'est pas votre publication ! Vous ne pouvez pas la supprimer")
+   }
+  
+
+  })
+}
 //console.log("commentaires----->", commentaires)
 //console.log(commentaires, typeof(commentaires))
-
-
     return(
     <div>
 {
   commentaires.map((item)=>(
-    <div class="container_post">
-      <div class="structureNom">{item.prenom} {item.nom}</div>
-      <div class="container_structure_post">
-        <div class="structurePost">{item.commentaire}</div>
-        <img class="img_post" src="{item.images}"/>
-        <div class="choice">
+    <div className="container_post">
+      <div className="structureNom">{item.prenom} {item.nom}</div>
+      <div className="container_structure_post">
+        <div className="structurePost">{item.commentaire}</div>
+        <img className="img_post" src="{item.images}"/>
+        <div className="choice">
           <div className="cardCom">
-            <div onClick={()=> setShowComments(!showComments)}><i class="far fa-comment"></i></div>
+            <div className="btnCom" onClick={()=> setShowComments(!showComments)}><i class="far fa-comment"></i></div>
             {showComments && <CardComments/>}
           </div>
-          <div><i class="far fa-thumbs-up"></i></div>
-          <div><i class="far fa-thumbs-down"></i></div>   
+          <div><i className="far fa-thumbs-up"></i></div>
+          <div><i className="far fa-thumbs-down"></i></div>   
         </div>
       </div>
       <div className="cardCom">
-        <button  class="btnModif1"><i class="fas fa-pen"></i></button>
-        <button  class="btnModif1"><i class="fa-regular fa-trash-can"></i></button> 
+        <button  className="btnModif1"><i class="fas fa-pen"></i> - Modifier</button>
+        <button  className="btnDeleteCom">Delete</button>
       </div>
     </div>
   ))}

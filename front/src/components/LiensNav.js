@@ -12,17 +12,19 @@ function LiensNav(){
      headers: { "Content-Type": "application/json" },
      
    };
-   useEffect(()=>{
-       fetch(`http://localhost:3000/auth/get/${id}`, bdd)
-    .then ((res) => res.json())  
-    .then ((data) => {
+   useEffect(()=> {
+        fetch(`http://localhost:3000/auth/get/${id}`, bdd)
+        .then ((res) => res.json())  
+        .then ((data) => {
    
         
         setLiens(data);
     }).catch((error) => console.log(error));
+   }, []);
+      
  
-   }, [])   
- 
+   
+ console.log("liens", liens)
     const logoutHandler = async () => {
         localStorage.clear();
         alert('Vous venez de vous déconnecter ! A bientôt !!')

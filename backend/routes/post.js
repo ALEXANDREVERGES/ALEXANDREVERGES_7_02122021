@@ -8,6 +8,7 @@ const postCtrl  = require('../controllers/post.js');
 
 router.post('/post',auth ,multer ,postCtrl.createPost);
 router.get('/get/commentaire',auth, postCtrl.getPost);
-router.get('/get/commentaire/:id', postCtrl.getOnePost);
+router.get('/get/commentaire/:id',auth, postCtrl.getOnePost);
+router.delete('/delete/:id',auth, postCtrl.deleteCom)
 
 module.exports = router;

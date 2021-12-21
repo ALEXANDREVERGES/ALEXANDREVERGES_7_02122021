@@ -47,3 +47,18 @@ exports.getPost = (req, res) => {
      })
     
      }
+     /**************************************************** */
+     exports.deleteCom = (req, res) => {
+      const id = req.params.id;
+      const iduser = req.params.iduser;
+      const idcom = req.params.iduser;
+      console.log("id_com--deleteBack-->", id)
+      console.log("iduser--deleteBack-->", iduser)
+     db.query("DELETE FROM post WHERE id=?", [id] , (err, result)=> {
+        if(err){
+      
+        } else {
+          res.send(result)
+        }
+      })
+      }

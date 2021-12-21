@@ -1,5 +1,7 @@
 .cardCom{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     
 }
@@ -7,4 +9,10 @@
     width: 100px;
     height: 500px;
     border: 1px solid rgb(241, 240, 240);
+}
+.fas fa-pen{
+    color: black;
+}
+.btnCom{
+    cursor: pointer;
 }
