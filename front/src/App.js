@@ -17,6 +17,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
 
+
+
 function App(){
 
   return (
@@ -50,7 +52,9 @@ function App(){
         <Route path="/delete" >  
         <Nav /> 
         <Delete />
-        </Route>        
+        </Route> 
+       
+       
       </Switch>
    </Router>  
    

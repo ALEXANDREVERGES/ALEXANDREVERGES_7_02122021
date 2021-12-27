@@ -21,7 +21,7 @@ exports.signup = async (req, res) => {
      const prenom = req.body.prenom;
      const email = req.body.email;
      const password = req.body.password;
-     const iduser = req.body.iduser;
+    // const iduser = req.body.iduser;
     // ====== Password encryption =========
     const salt = await bcrypt.genSalt(10);
     const passHash = await bcrypt.hash(password, salt);
@@ -32,7 +32,7 @@ exports.signup = async (req, res) => {
     console.log(pass)
     db.query("INSERT INTO user (nom, prenom, email, password ) VALUES (?,?,?,?)",[nom, prenom, email, pass["password"]], (err,result)=> {
       console.log("result------>", result)
-      console.log (pass["password"])
+      console.log ("password",pass["password"])
       if (!result) {
         res.status(200).json({ message: "Email déjà enregistré" });
       } else {
@@ -48,7 +48,7 @@ exports.signup = async (req, res) => {
       }
     });
   } catch (err) {
-    res.status(200).json({ message: "Failed registration", err });
+    res.status(409).json({ message: "Failed registration", err });
   }
 };
 //******On recupère un user de la base de données, si user introuvable return (401) */
@@ -58,11 +58,11 @@ exports.signup = async (req, res) => {
 
 
 exports.login = (req, res) => {
-  const nom = req.body.nom;
-  const prenom = req.body.prenom;
+  //const nom = req.body.nom;
+ // const prenom = req.body.prenom;
   const email = req.body.email;
   const password = req.body.password;
-  const iduser = req.params.iduser;
+ // const iduser = req.params.iduser;
   const sql = `SELECT * FROM user WHERE email=?`
   db.query(sql, [email], (err, results) => {
     
@@ -74,7 +74,7 @@ exports.login = (req, res) => {
     
    // console.log("req.params--->" , req.params)
    // console.log ("password ----->",password ,"results.password---->", results[0].password)
-    console.log ("results.iduser---->", results[0].iduser)
+   // console.log ("results.iduser---->", results[0].iduser)
    // console.log("req.body---->",req.body)
     bcrypt.compare(password, results[0].password) 
     .then(valid => {
@@ -124,7 +124,7 @@ exports.login = (req, res) => {
      }
    })
   }catch (err) {
-    res.status(400).json({ message: "Failed registration", err });
+    res.status(409).json({ message: "Failed registration", err });
   }
 };
 

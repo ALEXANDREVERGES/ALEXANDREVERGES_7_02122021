@@ -1,18 +1,46 @@
 .cardCom{
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     
 }
-.container_cardCom{
-    width: 100px;
-    height: 500px;
+.container_com{
+    
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+}
+.cardCom1{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border: 1px solid rgb(241, 240, 240);
+    background-color: rgb(234, 213, 253);
+    padding: 10px;
+    border-radius: 10px;
+}
+.container_cardCom{
+    width: 100%;
+    height: auto;
+    border: 1px solid rgb(241, 240, 240);
+}
+.container_cardCom1{
+    width: 100%;
+    height: auto;
+    font-weight:500;
 }
 .fas fa-pen{
     color: black;
 }
 .btnCom{
     cursor: pointer;
+}
+.dateheureucom{
+    font-size: 10px;
 }

@@ -11,7 +11,7 @@ export default function Home() {
     return (
       <div className="container_home">
         <Post />
-          <div>  
+          <div className="container_posthome">  
             <Comments />
           </div>
       </div>

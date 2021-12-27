@@ -7,7 +7,7 @@ function Header() {
     return (
         <div className='header'>
             <div className='header-gpm'>
-                <img src={globe} alt='Groupomania'/>
+                
                 <h1>{title}</h1>  
             </div>    
 
