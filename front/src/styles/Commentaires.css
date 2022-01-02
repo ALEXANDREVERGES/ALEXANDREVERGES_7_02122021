@@ -1,0 +1,27 @@
+.container_onePost{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+h1{
+    width: 60%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgb(241, 240, 240);
+    background-color: rgb(234, 213, 253);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 0px;
+}
+.inputCom{
+    width: 610px;
+    height: 60px;
+    border:1px solid blueviolet;
+    
+}

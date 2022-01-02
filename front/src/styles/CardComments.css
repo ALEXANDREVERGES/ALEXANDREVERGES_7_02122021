@@ -14,7 +14,7 @@
     padding: 10px;
 }
 .cardCom1{
-    width: 100%;
+    width: 60%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -26,9 +26,14 @@
     border-radius: 10px;
 }
 .container_cardCom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
     height: auto;
     border: 1px solid rgb(241, 240, 240);
+    
 }
 .container_cardCom1{
     width: 100%;

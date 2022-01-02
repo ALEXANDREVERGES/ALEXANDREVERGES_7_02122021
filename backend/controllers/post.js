@@ -11,7 +11,7 @@ exports.createPost = (req, res) => {
   const nom = req.body.nom;
   const prenom = req.body.prenom;
 
-  // console.log("time", time)
+   console.log("time", time)
   db.query("INSERT INTO post (commentaire, iduser, time, nom, prenom, images) VALUES(?,?,?,?,?,?)",[commentaire, iduser, time, nom, prenom, images], (err, results) => {
   if(err){
     res.status(400).json({err});
@@ -79,8 +79,10 @@ exports.getPost = (req, res) => {
         console.log("commentaires---->", commentaires)
         console.log("iduser", iduser)
         const time = req.body.time;
-        
-        db.query("INSERT INTO comPost (commentaires, iduser, time) VALUES(?,?,?)",[commentaires, iduser,time], (err, results) => {
+        const idpost=req.body.idpost;
+        console.log("idpost", idpost)
+        console.log(time)
+        db.query("INSERT INTO comPost (commentaires, iduser, time,idpost) VALUES(?,?,?,?)",[commentaires, iduser,time,idpost], (err, results) => {
         if(err){
           res.status(400).json({err});
         } 
@@ -97,13 +99,14 @@ exports.getPost = (req, res) => {
       exports.getPostCom = (req, res) => {
         // console.log(req)
        //console.log("req.params--getPost-->", req.params)
-      
-         db.query("SELECT * FROM comPost INNER JOIN user ON comPost.iduser = user.iduser ORDER BY time",(err, result)=> {
+      const id = req.params.idpost;
+      console.log(id)
+         db.query("SELECT * FROM comPost INNER JOIN user ON comPost.iduser = user.iduser WHERE idpost=? ORDER BY id DESC",[id],(err, result)=> {
            if(err){
           //   console.log(err)
            } else {
              res.send(result)
-            
+            console.log(result)
            }
          })
         }
@@ -147,3 +150,19 @@ exports.getPost = (req, res) => {
             }
           })
           }
+          //****************************************************/
+
+          exports.getOneComPost = (req, res) => {
+            
+          //console.log("req.params--getPost-->", req.params)
+          const id = req.params.id;
+            db.query("SELECT * FROM post WHERE id=?" , [id],(err, result)=> {
+              if(err){
+             //   console.log(err)
+              } else {
+                res.send(result)
+               console.log(result)
+              }
+            })
+           
+            }

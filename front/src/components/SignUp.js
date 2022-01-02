@@ -61,6 +61,7 @@ export default function SignUp() {
     fetch("http://localhost:3000/auth/signup", requestOptions)
       .then((response) => {
         console.log(response.json());
+        console.log(response)
         if (response.ok) {
       
      // window.location = '/home';

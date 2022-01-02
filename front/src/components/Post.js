@@ -62,10 +62,8 @@ function Post(){
             name="nom"
             type="text"
             onChange={e => setPost(e.target.value)}/>             
-          </label>     
-          <form method="POST" action="/images" enctype="multipart/form-data">    
-          <input type="file" accept="image/*" name="image" onChange={e =>setPhoto (e.target.value)} />
-          </form>  
+          </label>           
+          <input type="file" accept="image/*"  onChange={e =>setPhoto (e.target.value)} enctype="multipart/form-data"/>
           <button className="btnPublier"><i class="far fa-paper-plane"></i> Publier</button>
         </form>
       </div> 

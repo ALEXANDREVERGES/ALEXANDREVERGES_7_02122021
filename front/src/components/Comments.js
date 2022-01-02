@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import CardComments from "./CardComments";
 import "../styles/CardComments.css"
+
 import { useHistory } from "react-router-dom";
 
 
 
 function Comments() {
   let history = useHistory();
-const [commentaires, setCommentaires] = useState([]);
+  const [commentaires, setCommentaires] = useState([]);
 const [showComments, setShowComments] = useState(false);
-const [showUpdate, setUpdate] = useState(false);
-const [photo1, setPhoto1] = React.useState("");
+
 const [comPost, setComPost] = React.useState("");
 //const [delete, setDelete] = useState(false);
 //var commentaire;
@@ -91,19 +90,7 @@ for(let l = 0; l < btnDeleteCom.length; l++){
 }
 }
 //*********BOUTON MODIFIER******************************************************/
-function updatePost(){
-  let btnUpdate = document.getElementsByClassName('btnUpdate');
-  console.log("btnUpdate--->", btnUpdate)
-  for(let h = 0; h<btnUpdate.length; h++){
-    btnUpdate[h].addEventListener("click", (event)=>{
-      event.preventDefault();
-      let id = commentaires[h].id;
-      console.log("id", id)
-      const idcom = commentaires[h].iduser;
-      localStorage.setItem("idcom", id)
-    })
-  }
-}
+
 
     //   const formModifyPost = {
     //     method: "PUT",
@@ -144,40 +131,7 @@ for(let m = 0; m < btnCom.length; m++){
 }
 }
 //*********************MODIFIER POST********************/
-const publierModifPost = (event) => {
-  event.preventDefault();
-  const compostup  = JSON.parse(localStorage.getItem("idcom")) 
-  const id = compostup;
-  console.log("id", id)
-  console.log("user.iduser--modifPost--->", user.iduser)
-  var d = new Date();
-var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-var fullDate = date+' '+hours;
 
-  const formModifyPost = {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" ,'Authorization': `Bearer ${token}`},
-    body: JSON.stringify({
-      commentaire:showUpdate,
-      images:photo1,
-      iduser:user.iduser,
-      time: fullDate
-    })
-  }
-  console.log("formModifyPost--->", formModifyPost)
-    fetch(`http://localhost:3000/api/update/${id}`, formModifyPost)
-          
-            .then((res) => {
-            //  console.log("formModify--->",formModify.body)
-           //   console.log("res--->" , res)
-           //    localStorage.setItem("user", JSON.stringify(formModify.body));
-              window.location = "/home"
-              
-            })
-            .catch((error) => console.log(error));
-    
-  };
 /*******************************BUTTON REPONDRE****************/
 function commentShow(){
   let btnCom = document.getElementsByClassName('btnCom');
@@ -187,45 +141,19 @@ function commentShow(){
       event.preventDefault();
       let idcs = commentaires[n].id;
       console.log("idcs", idcs)
+      localStorage.setItem("idcs", idcs)
       const idcomShow = commentaires[n].iduser;
       localStorage.setItem("idcomShow", idcomShow)
+      window.location='/commentaires'
     })
   }
+  
 }
-const publierComPost = (event) => {
-  event.preventDefault();
-  const compostshow  = JSON.parse(localStorage.getItem("idcomShow")) 
-  const id = compostshow;
-  console.log("id", id)
-  console.log("user.iduser--modifPost--->", user.iduser)
-  var d = new Date();
-var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-var fullDate = date+' '+hours;
-
-  const formComShow = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" ,'Authorization': `Bearer ${token}`},
-    body: JSON.stringify({
-      commentaires:comPost,
-      iduser:user.iduser,
-      time:fullDate
-    })
+  function comOnepost(){
+    window.location='/commentaires'
   }
-  console.log("formComShow--->", formComShow)
-    fetch("http://localhost:3000/api/post/com", formComShow)
-          
-            .then((res) => {
-            //  console.log("formModify--->",formModify.body)
-           //   console.log("res--->" , res)
-           //    localStorage.setItem("user", JSON.stringify(formModify.body));
-              window.location = "/home"
-              
-            })
-            .catch((error) => console.log(error));
-    
-  };
- 
+  var maDate = new Date 
+  var now = maDate.toUTCString();
     return(
     <div>
 {
@@ -233,7 +161,8 @@ var fullDate = date+' '+hours;
     <div className="container_post">
       <div className="container_nom">
       <div className="structureNom">{item.prenom} {item.nom}</div>
-      <div className="structureNom1">{item.time}</div>
+      
+      <div className="structureNom1">{now}</div>
       </div>
       <div className="container_com">
         <div >
@@ -241,43 +170,15 @@ var fullDate = date+' '+hours;
         </div>
       </div>
       <div>
-      <img src="{item.images}"/>    
+      <img src="{item.images}"/>  
         <div className="choice">
           <div className="cardCom">  
-           
-            {showComments === true} 
-            {showComments && (
-              <div>
-                <CardComments />
-                <input type="text" className="inputCom"  onChange={e =>setComPost (e.target.value)}/>
-              <br/>
-              <button id="inputComPost"  onClick={publierComPost} className="inputComPost">Répondre</button>
-              </div>
-            )}
-             <div id="btnCom" className="btnCom" onClick={commentShow} onDoubleClick={()=> setShowComments(!showComments)} ><i class="far fa-comment"></i></div>
+             <div id="btnCom" className="btnCom" onClick={commentShow} onDouclickClick={comOnepost} ><i class="far fa-comment"></i></div>
           </div>   
         </div>
       </div>
       <div className="cardCom2">
-        {/* <button id="btnUpdate" onClick={} onDoubleClick={()=> setUpdate(!showUpdate)}> Modifier</button> */}
-        <button id="btnUpdate" className="btnUpdate" onClick={updatePost} onDoubleClick={()=> setUpdate(!showUpdate)}> Modifier</button>
-        
-        <button id="btnDeleteCom"  onClick={deletePost} className="btnDeleteCom">Supprimer</button>
-        {showUpdate=== true} 
-        {showUpdate && (
-          <div>
-            <br/>
-          <textarea 
-          defaultValue={item.commentaire}
-          onChange={(e) => setUpdate(e.target.value)}
-          />
-          <br/>
-          <input type="file" accept="image/*"  onChange={e =>setPhoto1 (e.target.value)}/>
-          <br/>
-          <button onClick={publierModifPost} className="btnPublier"><i class="far fa-paper-plane"></i> Publier</button>
-            
-            </div>
-        )}
+        <button id="btnDeleteCom"  onClick={deletePost} onDouclickClick={comOnepost}  className="btnDeleteCom">Supprimer</button>
       </div>
     </div>
   ))}

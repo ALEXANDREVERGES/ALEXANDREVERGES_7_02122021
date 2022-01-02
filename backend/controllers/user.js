@@ -28,10 +28,10 @@ exports.signup = async (req, res) => {
     const pass= {
       password: passHash,
     };
-   
+   console.log(req.body)
     console.log(pass)
     db.query("INSERT INTO user (nom, prenom, email, password ) VALUES (?,?,?,?)",[nom, prenom, email, pass["password"]], (err,result)=> {
-      console.log("result------>", result)
+      console.log("results------>", result)
       console.log ("password",pass["password"])
       if (!result) {
         res.status(200).json({ message: "Email déjà enregistré" });

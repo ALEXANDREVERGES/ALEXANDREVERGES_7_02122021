@@ -12,7 +12,7 @@ import Modification from './components/Modification.js'
 import Delete from './components/Delete.js'
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import Commentaires from './components/Commentaires.js';
 
 
 
@@ -53,7 +53,10 @@ function App(){
         <Nav /> 
         <Delete />
         </Route> 
-       
+        <Route path="/commentaires" >  
+        <Nav /> 
+        <Commentaires/>
+        </Route> 
        
       </Switch>
    </Router>  
