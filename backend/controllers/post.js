@@ -6,19 +6,22 @@ exports.createPost = (req, res) => {
   
   const commentaire = req.body.commentaire;
   const iduser = req.body.iduser;
-  const images = req.body.images;
+   let image = req.body.images;
+   console.log("image", image)
+  let uploadPath  = __dirname + '/images/' + image;
+  console.log("uploadPath----->",uploadPath)
   const time = req.body.time;
   const nom = req.body.nom;
   const prenom = req.body.prenom;
 
    console.log("time", time)
-  db.query("INSERT INTO post (commentaire, iduser, time, nom, prenom, images) VALUES(?,?,?,?,?,?)",[commentaire, iduser, time, nom, prenom, images], (err, results) => {
+  db.query("INSERT INTO post (commentaire, iduser, time, nom, prenom, images) VALUES(?,?,?,?,?,?)",[commentaire, iduser, time, nom, prenom, uploadPath], (err, results) => {
   if(err){
     res.status(400).json({err});
   } 
  if(results){
      res.status(200).json({message : "Publication effectuée !" });
-     console.log(results)
+     console.log("results", results)
     
   
  }

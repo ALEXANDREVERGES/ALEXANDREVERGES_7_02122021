@@ -48,9 +48,6 @@ function updatePost(){
 }
 
 
-
-
-
 //*****************BOUTON SUPPRIMER POST ******************/
 function deletePost(){
   let btnDeleteCom = document.getElementsByClassName('btnDeleteCom');
@@ -89,30 +86,6 @@ for(let l = 0; l < btnDeleteCom.length; l++){
   })
 }
 }
-//*********BOUTON MODIFIER******************************************************/
-
-
-    //   const formModifyPost = {
-    //     method: "PUT",
-    //     headers: { "Content-Type": "application/json" ,'Authorization': `Bearer ${token}`},
-    //     body: JSON.stringify({
-    //       iduser:id,
-    //       images: photo,
-    //       commentaire: setUpdate,
-    //     })
-    //   };
-    //   fetch(`http://localhost:3000/api/update/${id}`, formModifyPost)
-          
-    //   .then((res) => {
-    //   //  console.log("formModify--->",formModify.body)
-    //  //   console.log("res--->" , res)
-    //  //    localStorage.setItem("user", JSON.stringify(formModify.body));
-    // //    window.location.reload();
-        
-    //   })
-    //   .catch((error) => console.log(error));
-    
-  
 
 
 //***********************************************************************/
@@ -130,7 +103,7 @@ for(let m = 0; m < btnCom.length; m++){
   })
 }
 }
-//*********************MODIFIER POST********************/
+
 
 /*******************************BUTTON REPONDRE****************/
 function commentShow(){
@@ -152,8 +125,8 @@ function commentShow(){
   function comOnepost(){
     window.location='/commentaires'
   }
-  var maDate = new Date 
-  var now = maDate.toUTCString();
+  // var maDate = new Date 
+  // var now = maDate.toUTCString();
     return(
     <div>
 {
@@ -162,7 +135,7 @@ function commentShow(){
       <div className="container_nom">
       <div className="structureNom">{item.prenom} {item.nom}</div>
       
-      <div className="structureNom1">{now}</div>
+      <div className="structureNom1">{item.time}</div>
       </div>
       <div className="container_com">
         <div >
@@ -170,6 +143,7 @@ function commentShow(){
         </div>
       </div>
       <div>
+        <br/>
       <img src="{item.images}"/>  
         <div className="choice">
           <div className="cardCom">  

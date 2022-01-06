@@ -6,12 +6,15 @@
     color: blueviolet;
     box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
     flex-direction: column;
+    width: 100%;
 }
 .header-gpm{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
+
 img .imgHead{
     width:50px;
 }

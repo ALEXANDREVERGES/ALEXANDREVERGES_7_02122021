@@ -22,16 +22,16 @@ function Post(){
     
       const postSubmit = (event) => {
        event.preventDefault();
-      
+       var image = document.getElementById('image').files[0]
          const obj = {
         commentaire: post,
         iduser:id,
-        images:photo,
+        images:image.name,
         nom:nom,
         prenom:prenom,
         time:fullDate
       };
-  
+  console.log(obj)
       axios.post("http://localhost:3000/api/post",obj ,{
         headers: {
           'Accept': 'application/json',
@@ -54,7 +54,13 @@ function Post(){
       
       return(
         <div className="pos-form1">
-        <form className="formulaire1" onSubmit={postSubmit}> 
+        <form 
+        className="formulaire1" 
+        onSubmit={postSubmit}
+          method="post" 
+           enctype="multipart/form-data"
+           action='http://localhost:3000/upload' 
+        > 
           <label className="labelHome"> Hey !            
             <textarea
             id="post"
@@ -62,9 +68,23 @@ function Post(){
             name="nom"
             type="text"
             onChange={e => setPost(e.target.value)}/>             
-          </label>           
-          <input type="file" accept="image/*"  onChange={e =>setPhoto (e.target.value)} enctype="multipart/form-data"/>
-          <button className="btnPublier"><i class="far fa-paper-plane"></i> Publier</button>
+          </label>  
+          <form
+          method="post"
+          enctype="multipart/form-data"
+          action='http://localhost:3000/upload' 
+          >
+
+          <input 
+          type="file"
+          accept="image/*" 
+          name="image" 
+          onChange={e =>setPhoto (e.target.value)} 
+          id="image"
+          /> 
+          <input type='submit' value='Valider votre image' />
+          </form>
+          <button type='submit' className="btnPublier"><i class="far fa-paper-plane"></i> Publier</button>
         </form>
       </div> 
       )

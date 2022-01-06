@@ -127,6 +127,7 @@ function Commentaires(){
                 <div className="container_com">
                     <div >
                         <div >{item.commentaire}</div> 
+                        <br/>
                         <img src="{item.images}" />
                     </div>
                 </div>
@@ -140,7 +141,7 @@ function Commentaires(){
           onChange={(e) => setUpdate(e.target.value)}
           />
           <br/>
-          <input type="file" accept="image/*" id="fileItem" onChange={e =>setPhoto1 (e.target.value)}/>
+          <input type="file" accept="image/*" id="fileItem" name="image" onChange={e =>setPhoto1 (e.target.value)}/>
           <br/>
           <button onClick={publierModifPost} className="btnPublier"><i class="far fa-paper-plane"></i> Publier</button>
             
@@ -156,7 +157,7 @@ function Commentaires(){
                 <button id="inputComPost"  onClick={publierComPost} className="inputComPost">Répondre</button>
 
             </div>
-            <h1>Commentaires:</h1>
+            <h2>Commentaires:</h2>
            <CardComments />
         </div>
       )

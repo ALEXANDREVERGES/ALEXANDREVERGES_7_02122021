@@ -1,5 +1,5 @@
 const express = require('express');
-
+const  fileUpload  =  require ( 'express-fileupload' ) ; 
 const cors = require('cors');
 //importer le package HTTP de NODE JS pour avoir les outils pour créer le server
 const http = require('http');
@@ -8,8 +8,10 @@ const path = require('path');
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post')
 const bodyParser = require ('body-parser');
+const db = require('../backend/data/databaseConnect');
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
+app.use(fileUpload());
 
 const normalizePort = val => {
     const port = parseInt(val, 10);
@@ -62,6 +64,23 @@ app.use('/images', express.static(path.join(__dirname, "images")));
 app.use('/auth', userRoutes);
 app.use('/api', postRoutes);
 
+ app.post('/upload', function (req, res){
+    let image;
+    let uploadPath;
+   
+    console.log("req.files.image--->",req.files.image);
+    if  ( !req.files  ||  Object.keys( req.files ).length  ===  0 )  { 
+      return  res.status( 400 ) . send ( 'Aucun fichier téléchargé' ) ; 
+    }
+     image  =  req.files.image;
+     uploadPath  = __dirname + '/images/' + image.name ;
+     
+     console.log(uploadPath)
+    image.mv(uploadPath, function(err) {
+      if (err)
+        return res.status(500).send(err);
+    });
+ })
 
 const server = http.createServer(app);
 //**écouteur d'évènements consignant le port ou le canal nommé sur lequel le serveur s'exécute dans la console*/
