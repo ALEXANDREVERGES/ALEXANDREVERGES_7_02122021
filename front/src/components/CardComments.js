@@ -72,7 +72,7 @@ for(let s = 0; s < btnDeleteComPost.length; s++){
   })
 }
 }
-console.log("commentairePost[0].images.data", commentairePost[0].images)
+//console.log("commentairePost[0].images", commentairePost[0].images)
 var maDate = new Date 
 var now = maDate.toUTCString();
     return(
@@ -85,6 +85,7 @@ var now = maDate.toUTCString();
               <div className="dateheureucom">{now}</div>
             </div>          
             <div>{items.commentaires}</div>
+           
             <button onClick={deleteComPost} id="btnDeleteComPost" className="btnDeleteComPost">Supprimer</button>
 
           </div>

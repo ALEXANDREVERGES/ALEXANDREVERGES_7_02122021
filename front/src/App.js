@@ -21,10 +21,14 @@ import Commentaires from './components/Commentaires.js';
 
 function App(){
 
+  const user  = JSON.parse(localStorage.getItem("user")) 
+
   return (
+    
   <div>
     <Router>
       <Switch>
+      {/* {user? (Nav , Home)  : (Login)} */}
         <Route exact path="/">
           <Header /> 
           <Login />
@@ -57,7 +61,7 @@ function App(){
         <Nav /> 
         <Commentaires/>
         </Route> 
-       
+
       </Switch>
    </Router>  
    

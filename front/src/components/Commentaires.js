@@ -128,7 +128,7 @@ function Commentaires(){
                     <div >
                         <div >{item.commentaire}</div> 
                         <br/>
-                        <img src="{item.images}" />
+                        <img src="{item.images}"/>
                     </div>
                 </div>
                 <button id="btnUpdate" className="btnUpdate" onDoubleClick={()=> setUpdate(!showUpdate)} > Modifier</button>

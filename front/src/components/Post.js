@@ -7,7 +7,7 @@ function Post(){
     const token = user.token;
    const nom = user.results.results[0].nom;
    const prenom = user.results.results[0].prenom;
-   console.log(nom)
+   console.log("nom---->", nom)
     // const date = new Date().toString();
    
     // console.log("date--->", date)
@@ -26,7 +26,7 @@ function Post(){
          const obj = {
         commentaire: post,
         iduser:id,
-        images:image.name,
+        images:image,
         nom:nom,
         prenom:prenom,
         time:fullDate

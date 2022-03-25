@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 function Comments() {
   let history = useHistory();
   const [commentaires, setCommentaires] = useState([]);
-const [showComments, setShowComments] = useState(false);
+  const [showComments, setShowComments] = useState(false);
 
 const [comPost, setComPost] = React.useState("");
 //const [delete, setDelete] = useState(false);
@@ -16,6 +16,12 @@ const [comPost, setComPost] = React.useState("");
 //const commentaire=[];
 const user  = JSON.parse(localStorage.getItem("user")) 
 const token = user.token;
+
+
+const adm = user.results.results[0].admin;
+console.log("adm----->", adm)
+
+
 console.log("user.iduser---->", user.iduser)
 useEffect(() => {
   fetch(`http://localhost:3000/api/get/commentaire`, 
@@ -39,7 +45,7 @@ useEffect(() => {
 }, [])
 
 
-//*******Bouton update */
+//*******Bouton update/modifier */
 function updatePost(){
   updatePost ("click",(event) =>{
   event.preventDefault();
@@ -127,10 +133,13 @@ function commentShow(){
   }
   // var maDate = new Date 
   // var now = maDate.toUTCString();
-    return(
+ 
+  return(
     <div>
+    
 {
-  commentaires.map((item)=>(
+  commentaires.map((item, adm)=>( //ligne 21 adm
+    
     <div className="container_post">
       <div className="container_nom">
       <div className="structureNom">{item.prenom} {item.nom}</div>
@@ -139,20 +148,22 @@ function commentShow(){
       </div>
       <div className="container_com">
         <div >
-          <div >{item.commentaire}</div> 
+          <div >{item?.commentaire}</div> 
         </div>
       </div>
       <div>
         <br/>
-      <img src="{item.images}"/>  
+      <img src="./publi/logo192.png"/>  
         <div className="choice">
           <div className="cardCom">  
              <div id="btnCom" className="btnCom" onClick={commentShow} onDouclickClick={comOnepost} ><i class="far fa-comment"></i></div>
           </div>   
         </div>
       </div>
+
       <div className="cardCom2">
-        <button id="btnDeleteCom"  onClick={deletePost} onDouclickClick={comOnepost}  className="btnDeleteCom">Supprimer</button>
+         {adm?(  
+        <button id="btnDeleteCom"  onClick={deletePost} onDouclickClick={comOnepost}  className="btnDeleteCom">Supprimer</button> ) : <></>}
       </div>
     </div>
   ))}

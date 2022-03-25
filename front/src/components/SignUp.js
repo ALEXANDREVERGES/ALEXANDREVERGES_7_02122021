@@ -11,6 +11,7 @@ export default function SignUp() {
   const [password, setPassword] = React.useState("");
   const [prenom, setPrenom] = React.useState("");
   const [nom, setNom] = React.useState("");
+  const admin = 0;
   
 
   const signupHandler = (event) => {
@@ -42,6 +43,7 @@ export default function SignUp() {
       Password: ${password}
       Prenom: ${prenom}
       Nom: ${nom}
+      Admin: ${admin}
       
     `);
     alert('Vous venez de créer votre compte ! Notez bien votre email et Mot de passe !');
@@ -56,6 +58,7 @@ export default function SignUp() {
         prenom: prenom,
         email: email,
         password: password,
+        admin : admin
       }),
     };
     fetch("http://localhost:3000/auth/signup", requestOptions)
